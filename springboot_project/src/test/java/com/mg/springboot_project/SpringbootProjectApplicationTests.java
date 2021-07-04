@@ -29,8 +29,7 @@ class SpringbootProjectApplicationTests {
 				"C:\\maven(workspace)\\mg_test20210424\\springboot_project\\" +
 						"src\\main\\resources\\static\\s.html");
 		template.process(map, fileWriter);
-		log.debug("debug修改");
-		log.debug("debug修改成功！");
+
 		log.debug("debug级别输出");
 		log.info("{}生成静态页成功！","mg");
 	}
