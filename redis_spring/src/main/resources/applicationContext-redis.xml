@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--jedis连接池配置对象-->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="50"/>
+		<property name="maxTotal" value="1000"/>
+		<property name="maxWaitMillis" value="1000"/>
+	</bean>
+
+	<!--配置spring连接Redis的连接工厂-->
+	<bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<!--配置连接池的配置-->
+		<property name="poolConfig" ref="jedisPoolConfig"/>
+		<!--主机名-->
+		<property name="hostName" value="192.168.136.133"/>
+		<!--端口-->
+		<property name="port" value="6379"/>
+		<!--redis密码-->
+		<property name="password" value="magang"/>
+	</bean>
+
+	<!--配置redis的操作模板-->
+	<bean class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory" ref="connectionFactory"/>
+	</bean>
+</beans>
