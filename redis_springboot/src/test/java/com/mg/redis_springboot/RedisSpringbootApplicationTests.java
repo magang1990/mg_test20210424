@@ -17,6 +17,7 @@ class RedisSpringbootApplicationTests {
 	void contextLoads() {
 
 		redisTemplate.opsForValue().set("name","mg" );
+		redisTemplate.opsForValue().set("age","31" );
 		String value = (String) redisTemplate.opsForValue().get("name");
 		System.out.println(value);
 		System.out.println(redisTemplate.opsForValue().get("name"));
