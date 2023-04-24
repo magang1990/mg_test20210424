@@ -7,11 +7,13 @@ package com.mg.meiju;
  */
 public class MeiJuMain {
 	public static void main(String[] args){
-		System.out.println(MeiJuEnum.ARTIFICIAL.getValue());
+		//System.out.println(MeiJuEnum.ARTIFICIAL.getValue());
 		MeiJuEnum artEnumObj = MeiJuEnum.valueOf("ARTIFICIAL");
 		System.out.println(artEnumObj);
-		System.out.println(artEnumObj.getKey());
-		System.out.println(artEnumObj.getValue());
+		System.out.println(artEnumObj.toString());
+		System.out.println(artEnumObj.name());
+		/*System.out.println(artEnumObj.getKey());
+		System.out.println(artEnumObj.getValue());*/
 	}
 
 }
