@@ -26,11 +26,7 @@ public class ListTest {
 //				list.remove("b");
 //		}
 
-		/*for (String s : list) {
-			list.remove(s);
-		}
-		System.out.println(list);
-*/
+
 
 		ArrayList<User> list1 = new ArrayList<>();
 		for (User user : list1) {

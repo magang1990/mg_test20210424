@@ -1,4 +1,4 @@
-package com.mg.lambda;
+package com.mg.stream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
