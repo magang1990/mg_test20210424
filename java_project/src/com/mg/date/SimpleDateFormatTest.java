@@ -8,15 +8,11 @@ import java.util.Date;
  * @Date 2021-08-07
  * @Version 1.0
  */
-public class DateMain {
+public class SimpleDateFormatTest {
 	public static void main(String[] args){
 		Date date=new Date();
 		SimpleDateFormat sdf=new SimpleDateFormat("yyMM");
 		System.out.println(sdf.format(date));
 
-
 	}
-
-
-
 }
