@@ -1,0 +1,14 @@
+server:
+  port: 8081
+jingzhun:
+  username: yunwujie
+  password: 123456
+  tokenUrl: http://api.ijingzhun.com/auth/token
+  oceanUrl: http://api.ijingzhun.com/trace/ocean
+  declareUrl: http://api.ijingzhun.com/trace/getBlnoDeclare
+#  declareUrl: http://api.ijingzhun.com/trace/getBlnoDeclare?blno={blno}&ieid={ieid}
+spring:
+  redis:
+    host: 192.168.136.133
+    password: magang
+

@@ -29,7 +29,7 @@ class SpringbootProjectApplicationTests {
 				"C:\\maven(workspace)\\mg_test20210424\\springboot_project\\" +
 						"src\\main\\resources\\static\\s.html");
 		template.process(map, fileWriter);
-
+		System.out.println("niubi");
 		log.debug("debug级别输出");
 		log.info("{}生成静态页成功！","mg");
 	}
