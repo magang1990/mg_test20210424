@@ -1,4 +1,4 @@
-package com.mg.arraylist;
+package com.mg.list;
 
 import java.util.ArrayList;
 import java.util.Iterator;

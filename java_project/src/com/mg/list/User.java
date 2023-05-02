@@ -1,4 +1,4 @@
-package com.mg.arraylist;
+package com.mg.list;
 
 /**
  * @author mg
