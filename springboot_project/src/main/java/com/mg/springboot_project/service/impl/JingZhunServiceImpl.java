@@ -26,15 +26,15 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class JingZhunServiceImpl implements JingZhunService {
 
-	@Value("${jingzhun.username}")
+	@Value("${jingzhun.username:}")
 	private String username;
-	@Value("${jingzhun.password}")
+	@Value("${jingzhun.password:}")
 	private String password;
-	@Value("${jingzhun.tokenUrl}")
+	@Value("${jingzhun.tokenUrl:}")
 	private String tokenUrl;
-	@Value("${jingzhun.oceanUrl}")
+	@Value("${jingzhun.oceanUrl:}")
 	private String oceanUrl;
-	@Value("${jingzhun.declareUrl}")
+	@Value("${jingzhun.declareUrl:}")
 	private String declareUrl;
 
 	@Resource

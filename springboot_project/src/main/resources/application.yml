@@ -7,8 +7,19 @@ jingzhun:
   oceanUrl: http://api.ijingzhun.com/trace/ocean
   declareUrl: http://api.ijingzhun.com/trace/getBlnoDeclare
 #  declareUrl: http://api.ijingzhun.com/trace/getBlnoDeclare?blno={blno}&ieid={ieid}
-spring:
-  redis:
-    host: 192.168.136.133
-    password: magang
+#spring:
+#  redis:
+#    host: 192.168.136.133
+#    password: magang
 
+#mg:
+#  demo:
+#    name: 马刚
+#    age: 32
+#    phone: 13125169793
+
+mg:
+  demo:
+    name: 马刚
+    age: 32
+    phone: 13125169793
