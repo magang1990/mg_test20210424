@@ -19,6 +19,9 @@ public class Test01 {
     @Value("${mg.demo.name}")
     private String name;
 
+    @Value("武汉市")
+    private String address;
+
     @Test
     public void run(){
         String message = mgDemoService.getAllMessage();
@@ -27,5 +30,10 @@ public class Test01 {
     @Test
     public void run2(){
         System.out.println(name);
+    }
+
+    @Test
+    public void run3(){
+        System.out.println(address);
     }
 }
