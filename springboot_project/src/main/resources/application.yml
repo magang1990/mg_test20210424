@@ -23,3 +23,15 @@ mg:
     name: 马刚
     age: 32
     phone: 13125169793
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mgtest?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=GMT
+    username: root
+    password: root
+
+#开启驼峰映射
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

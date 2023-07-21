@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mg.springboot_project.dao.StudentMapper">
+	<resultMap id="BaseResultMap" type="com.mg.springboot_project.entity.Student">
+		<id column="code" jdbcType="BIGINT" property="code"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="age" jdbcType="INTEGER" property="age"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+        code, name, age
+    </sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from t_student
+		where code = #{code,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_student
+    where code = #{code,jdbcType=BIGINT}
+  </delete>
+	<insert id="insert" parameterType="com.mg.springboot_project.entity.Student">
+    insert into t_student (code, name, age
+      )
+    values (#{code,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=TINYINT}
+      )
+  </insert>
+	<insert id="insertSelective" parameterType="com.mg.springboot_project.entity.Student">
+		insert into t_student
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="code != null">
+        code,
+      </if>
+			<if test="name != null">
+        name,
+      </if>
+			<if test="age != null">
+        age,
+      </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="code != null">
+        #{code,jdbcType=BIGINT},
+      </if>
+			<if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+			<if test="age != null">
+        #{age,jdbcType=TINYINT},
+      </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.mg.springboot_project.entity.Student">
+		update t_student
+		<set>
+			<if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+			<if test="age != null">
+        age = #{age,jdbcType=TINYINT},
+      </if>
+		</set>
+		where code = #{code,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.mg.springboot_project.entity.Student">
+    update t_student
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=TINYINT}
+    where code = #{code,jdbcType=BIGINT}
+  </update>
+</mapper>

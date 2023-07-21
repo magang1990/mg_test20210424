@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mg.springboot_project.dao.SysMenuInfoMapper">
+
+    <select id="getAllMenuList" resultType="com.mg.springboot_project.entity.SysMenuInfo">
+        select
+            menu_code,
+            short_menu_name,
+            full_menu_name,
+            level_type,
+            menu_type,
+            parent_menu_code
+        from t_sys_menu_info
+        where menu_status = 1
+        order by id asc
+    </select>
+
+</mapper>
