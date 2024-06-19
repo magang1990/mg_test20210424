@@ -22,4 +22,20 @@ public class TransactionalService {
         int i = 1 / 0;
     }
 
+    @Transactional(rollbackFor = Throwable.class)
+    public void save1(Long id) {
+        //studentMapper.deleteByPrimaryKey(id);
+        int num = studentMapper.deleteByPrimaryKey(id);
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        /*if (num==0) {
+            throw new RuntimeException("请重新刷新");
+        }*/
+        studentMapper.insertSelective(new Student("mc", 2));
+    }
+
 }

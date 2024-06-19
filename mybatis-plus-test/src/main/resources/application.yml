@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mgtest?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=GMT
+    username: root
+    password: root
+
+#开启驼峰映射
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+loggig:
+  level:
+    root: DEBUG
+mybatis-plus:
+  configuration:
+    ## 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

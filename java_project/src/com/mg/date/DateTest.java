@@ -12,6 +12,8 @@ public class DateTest {
         // 返回January 1, 1970, 00:00:00距今的毫秒数
         long time = currentDate.getTime();
         System.out.println(time);
+        long currentTimeMillis = System.currentTimeMillis();
+        System.out.println(currentTimeMillis);
 
     }
 

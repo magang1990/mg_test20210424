@@ -30,4 +30,19 @@ public class TransactionalTest {
         transactionalService.saveStudent();
     }
 
+    @Test
+    @Transactional(rollbackFor = Throwable.class)
+    public void run2() throws InterruptedException {
+        studentMapper.deleteByPrimaryKey(168L);
+        Thread.sleep(20000);
+        studentMapper.insert(new Student(3L, "mc", 2));
+    }
+
+    @Test
+    @Transactional(rollbackFor = Throwable.class)
+    public void run3(){
+        studentMapper.deleteByPrimaryKey(168L);
+        studentMapper.insert(new Student(3L, "mc", 2));
+    }
+
 }

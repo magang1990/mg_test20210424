@@ -16,6 +16,7 @@
 		from t_student
 		where code = #{code,jdbcType=BIGINT}
 	</select>
+
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_student
     where code = #{code,jdbcType=BIGINT}
@@ -69,4 +70,19 @@
       age = #{age,jdbcType=TINYINT}
     where code = #{code,jdbcType=BIGINT}
   </update>
+
+	<select id="selectAll" resultType="com.mg.springboot_project.entity.Student">
+		select
+		<include refid="Base_Column_List"/>
+		from t_student
+	</select>
+
+	<update id="batchUpdateStudent">
+		<foreach collection="list" item="item" separator=";">
+			update t_student
+    		set name = #{item.name,jdbcType=VARCHAR},
+      			age = #{item.age,jdbcType=TINYINT}
+    			where code = #{item.code,jdbcType=BIGINT}
+		</foreach>
+	</update>
 </mapper>

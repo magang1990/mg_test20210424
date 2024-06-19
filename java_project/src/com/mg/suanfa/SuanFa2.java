@@ -1,4 +1,4 @@
-package com.mg.maopao;
+package com.mg.suanfa;
 
 import java.util.Arrays;
 
