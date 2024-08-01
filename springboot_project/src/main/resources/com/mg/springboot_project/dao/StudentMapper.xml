@@ -85,4 +85,50 @@
     			where code = #{item.code,jdbcType=BIGINT}
 		</foreach>
 	</update>
+
+	<select id="queryByCodes" resultType="com.mg.springboot_project.entity.Student">
+		SELECT
+		<include refid="Base_Column_List"/>
+		FROM t_student
+		WHERE code IN
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+    		#{item,jdbcType=BIGINT}
+		</foreach>
+		LIMIT 0, 2
+	</select>
+
+	<select id="queryStudent" resultType="com.mg.springboot_project.entity.Student">
+		SELECT
+		<include refid="Base_Column_List"/>
+		FROM t_student
+		WHERE
+    		code = #{code,jdbcType=BIGINT}
+		AND name = #{name,jdbcType=VARCHAR}
+		AND age = #{age,jdbcType=TINYINT}
+	</select>
+
+	<select id="query2" resultType="com.mg.springboot_project.entity.Student">
+		SELECT
+		<include refid="Base_Column_List"/>
+		FROM t_student
+		WHERE
+		<!--code = #{code,jdbcType=BIGINT}
+		AND name = #{name,jdbcType=VARCHAR}
+		AND age IN
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+    		#{item,jdbcType=TINYINT}
+		</foreach>-->
+		code = #{param1,jdbcType=BIGINT}
+		AND name = #{param2,jdbcType=VARCHAR}
+		AND age IN
+		<foreach collection="param3" item="item" open="(" separator="," close=")">
+    		#{item,jdbcType=TINYINT}
+		</foreach>
+		<!--code = #{0,jdbcType=BIGINT}
+		AND name = #{1,jdbcType=VARCHAR}
+		AND age IN
+		<foreach collection="2" item="item" open="(" separator="," close=")">
+    		#{item,jdbcType=TINYINT}
+		</foreach>-->
+	</select>
 </mapper>

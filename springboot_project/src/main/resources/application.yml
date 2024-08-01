@@ -36,7 +36,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
-
-loggig:
+# 日志打印级别
+logging:
   level:
     root: DEBUG
