@@ -2,6 +2,7 @@ package com.mg.list;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +23,11 @@ public class SetTest {
         list.add("a");
         list.remove("b");
 
+        List<String> list2 = new ArrayList<>();
+        list2.add("c");
+        list2.add("b");
+        list2.add(0,"g");
+
         Set<String> sets = new HashSet<>();
         sets.add("c");
         sets.add("b");
@@ -29,8 +35,16 @@ public class SetTest {
         sets.add("a");
         sets.remove("b");
 
+        Set<String> linkedHashSet = new LinkedHashSet<>();
+        linkedHashSet.add("c");
+        linkedHashSet.add("b");
+        linkedHashSet.add("b");
+        linkedHashSet.add("a");
+
         System.out.println("list=" + list);
+        System.out.println("list2=" + list2);
         System.out.println("sets=" + sets);
+        System.out.println("linkedHashSet=" + linkedHashSet);
     }
 
 }

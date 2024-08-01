@@ -7,6 +7,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
+ * 对象去重（根据一个或者多个属性）
+ *
  * @author mg
  * @Date 2023-04-26
  * @Version 1.0

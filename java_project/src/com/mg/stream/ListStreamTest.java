@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * List集合的各种遍历方式耗时比较
+ *
  * @author mg
  * @Date 2023-04-27
  * @Version 1.0

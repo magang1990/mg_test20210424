@@ -10,7 +10,7 @@ import java.util.TreeSet;
  */
 public class Lambda2 {
 	public static void main(String[] args) {
-		//Runnable接口，无参
+		//Runnable接口，无参（匿名内部类）
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
@@ -20,6 +20,7 @@ public class Lambda2 {
 
 		new Thread(runnable).start();
 
+		// Lambda表达式
 		Runnable runnable2 = () -> System.out.println("Lambda表达式");
 		new Thread(runnable2).start();
 
