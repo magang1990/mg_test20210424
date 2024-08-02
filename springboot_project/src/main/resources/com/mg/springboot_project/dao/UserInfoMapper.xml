@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mg.springboot_project.dao.UserInfoMapper">
+	<resultMap id="BaseResultMap" type="com.mg.springboot_project.entity.UserInfo">
+		<id column="id" jdbcType="BIGINT" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="age" jdbcType="INTEGER" property="age"/>
+		<result column="phone" jdbcType="VARCHAR" property="phone"/>
+		<result column="email" jdbcType="VARCHAR" property="email"/>
+		<result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+		<result column="deleted" jdbcType="INTEGER" property="deleted"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+        id, name, age, phone, email, create_by, create_time, deleted
+    </sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from t_user_info
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_user_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+	<insert id="insert" parameterType="com.mg.springboot_project.entity.UserInfo">
+    insert into t_user_info (id, name, age, 
+      phone, email, create_by, 
+      create_time, deleted)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER})
+  </insert>
+	<insert id="insertSelective" parameterType="com.mg.springboot_project.entity.UserInfo">
+		insert into t_user_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+        id,
+      </if>
+			<if test="name != null">
+        name,
+      </if>
+			<if test="age != null">
+        age,
+      </if>
+			<if test="phone != null">
+        phone,
+      </if>
+			<if test="email != null">
+        email,
+      </if>
+			<if test="createBy != null">
+        create_by,
+      </if>
+			<if test="createTime != null">
+        create_time,
+      </if>
+			<if test="deleted != null">
+        deleted,
+      </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+			<if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+			<if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+			<if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+			<if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+			<if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+			<if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+			<if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.mg.springboot_project.entity.UserInfo">
+		update t_user_info
+		<set>
+			<if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+			<if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+			<if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+			<if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+			<if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+			<if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+			<if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.mg.springboot_project.entity.UserInfo">
+    update t_user_info
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+	<select id="selectByEmailList" resultType="com.mg.springboot_project.entity.UserInfo">
+		SELECT <include refid="Base_Column_List"/>
+		FROM t_user_info
+		<where>
+			<if test="list != null and list.size() > 0">
+				<!--方法一-->
+				IFNULL(email, '') IN
+				<foreach collection="list" item="item" open="(" separator="," close=")">
+					<choose>
+						<!--test条件里面=也是赋值，==才是判断相等-->
+						<when test="item == 'unknown'">
+							''
+						</when>
+						<otherwise>
+							#{item}
+						</otherwise>
+					</choose>
+				</foreach>
+
+				<!--方法二-->
+				<!--(
+				email IN
+				<foreach collection="list" item="item" open="(" separator="," close=")">
+					<choose>
+						&lt;!&ndash;test条件里面=也是赋值，==才是判断相等&ndash;&gt;
+						<when test="item == 'unknown'">
+							''
+						</when>
+						<otherwise>
+							#{item}
+						</otherwise>
+					</choose>
+				</foreach>
+				or
+				<if test="list.contains('unknown')">
+					email is null
+				</if>
+				)-->
+
+				<!--方法三-->
+				<!--<foreach collection="list" item="item" open="(" separator="or" close=")">
+					<choose>
+						<when test="item == 'unknown'">
+							email = '' OR email is null
+						</when>
+						<otherwise>
+							email = #{item}
+						</otherwise>
+					</choose>
+				</foreach>-->
+			</if>
+		</where>
+	</select>
+
+</mapper>
