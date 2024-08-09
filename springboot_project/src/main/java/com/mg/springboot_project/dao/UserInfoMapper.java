@@ -30,4 +30,6 @@ public interface UserInfoMapper {
      */
     List<UserInfo> selectByEmailList(@Param("list")List<String> list);
 
+    UserInfo selectByName(String userAccount);
+
 }
