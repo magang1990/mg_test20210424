@@ -40,3 +40,25 @@ mybatis:
 logging:
   level:
     root: DEBUG
+
+sso:
+  oauth2:
+    client:
+      white-list1: mg,ml,mch
+      white-list2: "['mg','ml','mch']"
+wx:
+  applet:
+    appid: 10086
+test:
+  username: mg
+  age: 18
+  hobby: ['eat','play','sleep']#只能在@ConfigurationProperties用，在@Value要用""括起来
+  hobby：
+    -
+  #yml中这种json格式只能用@ConfigurationProperties修饰类来解析
+  great: {"niu1":"nb1","niu2":"nb2"}
+  #yml中用@Value的spEL表达式时，要用""括起来
+  great4: "{'niu1':'nb1','niu2':'nb2'}"
+  great3:
+    niu3: "nb3"
+    niu4: "nb4"

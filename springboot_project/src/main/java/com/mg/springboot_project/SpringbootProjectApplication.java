@@ -6,6 +6,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 //@EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
 @EnableAspectJAutoProxy(exposeProxy = true)
+//@EnableConfigurationProperties(TestConfig.class)//({TestConfig.class})
 @SpringBootApplication
 public class SpringbootProjectApplication {
 

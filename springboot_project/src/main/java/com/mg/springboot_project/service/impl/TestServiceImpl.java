@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2024-08-08
  */
 @Service
+//@EnableConfigurationProperties(TestConfig.class)
 public class TestServiceImpl implements TestService {
 
     @Override
