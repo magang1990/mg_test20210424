@@ -15,7 +15,7 @@
 		<!--配置连接池的配置-->
 		<property name="poolConfig" ref="jedisPoolConfig"/>
 		<!--主机名-->
-		<property name="hostName" value="192.168.136.133"/>
+		<property name="hostName" value="192.168.202.128"/>
 		<!--端口-->
 		<property name="port" value="6379"/>
 		<!--redis密码-->
@@ -25,5 +25,20 @@
 	<!--配置redis的操作模板-->
 	<bean class="org.springframework.data.redis.core.RedisTemplate">
 		<property name="connectionFactory" ref="connectionFactory"/>
+
+		<!--序列化配置-->
+		<!--<property name="keySerializer">
+			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"
+		</property>-->
+		<property name="keySerializer" ref="string"/>
+		<property name="valueSerializer" ref="jackson"/>
+		<property name="hashKeySerializer" ref="string"/>
+		<property name="hashValueSerializer" ref="jackson"/>
 	</bean>
+
+	<bean id="string" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+	<bean id="jackson" class="org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer">
+		<constructor-arg value="java.lang.Object"/>
+	</bean>
+
 </beans>

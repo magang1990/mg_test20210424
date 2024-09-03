@@ -9,7 +9,7 @@ import redis.clients.jedis.Jedis;
  */
 public class RedisJavaTest {
 	public static void main(String[] args){
-		Jedis jedis=new Jedis("192.168.136.133", 6379);
+		Jedis jedis=new Jedis("192.168.202.128", 6379);
 		//在保护模式开启的状态下，需要填写密码；关闭则不用
 		jedis.auth("magang");
 

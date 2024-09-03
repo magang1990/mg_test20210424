@@ -1,5 +1,7 @@
 server:
   port: 8081
+  servlet:
+    context-path: springboot-project
 jingzhun:
   username: yunwujie
   password: 123456
@@ -35,6 +37,8 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+#  type-aliases-package:
+#  mapper-locations:
 
 # 日志打印级别
 logging:

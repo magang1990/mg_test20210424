@@ -16,7 +16,7 @@ public class RedisJavaTest2 {
 		config.setMaxIdle(50);
 		config.setMaxTotal(100);
 
-		JedisPool pool=new JedisPool(config,"192.168.136.133", 6379,1000,"magang");
+		JedisPool pool=new JedisPool(config,"192.168.202.128", 6379,1000,"magang");
 		Jedis jedis = pool.getResource();
 
 		int i=1;
