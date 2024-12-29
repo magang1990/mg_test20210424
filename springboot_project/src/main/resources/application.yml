@@ -1,7 +1,7 @@
 server:
   port: 8081
   servlet:
-    context-path: springboot-project
+    context-path: /springboot-project
 jingzhun:
   username: yunwujie
   password: 123456
@@ -56,9 +56,11 @@ wx:
 test:
   username: mg
   age: 18
-  hobby: ['eat','play','sleep']#只能在@ConfigurationProperties用，在@Value要用""括起来
-  hobby：
-    -
+  #hobby: ['eat','play','sleep']#只能在@ConfigurationProperties用，在@Value要用""括起来
+  hobby:
+    - 'eat'
+    - 'play'
+    - 'sleep'
   #yml中这种json格式只能用@ConfigurationProperties修饰类来解析
   great: {"niu1":"nb1","niu2":"nb2"}
   #yml中用@Value的spEL表达式时，要用""括起来

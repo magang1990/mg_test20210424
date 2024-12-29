@@ -8,7 +8,7 @@ import com.mg.springboot_project.entity.UserInfo;
  * 2、线程池设置TaskDecorator（推荐）
  * 3、InheritableThreadLocal。线程池使用会有复用问题
  * （可继承的线程变量只是在线程被创建的时候进行了初始化工作，后续线程池线程不会取父线程的值。
- * 这也就能解释为什么在线程池中发生线程复用时不能获取到父线程线程变量的原因）
+ * 这也就能解释为什么在线程池中发生线程复用时不能获取到父线程新线程变量的原因）
  * 4、TransmittableThreadLocal（推荐）
  *
  * @author mg
