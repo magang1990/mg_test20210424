@@ -9,10 +9,12 @@ import java.util.*;
  */
 public class MapTest {
     public static void main(String[] args) {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("human", "mg");
+        HashMap<String, String> map = new HashMap<>();//没有设置容量时默认16,0.75f加载因子，容量达到0.75则按两倍扩容。
+        String put = map.put("human", "mg");
         map.put("animl", "naiyou");
-        map.put("human", "ml");
+        String put1 = map.put("human", "ml");
+        String put2 = map.put("human", "ml");
+        int num =1 << 4;
 
         System.out.println(map.get("human"));
         System.out.println(map);
