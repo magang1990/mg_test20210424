@@ -21,8 +21,12 @@ public class ThreadLocalTest {
 		public void run() {
 			Object o = tl.get();
 			if (o==null) {
-				tl.set(new Object());
-				System.out.println(Thread.currentThread().getName()+":"+tl.get());
+				try {
+					tl.set(new Object());
+					System.out.println(Thread.currentThread().getName()+":"+tl.get());
+				} finally {
+					tl.remove();
+				}
 			}
 		}
 	}
