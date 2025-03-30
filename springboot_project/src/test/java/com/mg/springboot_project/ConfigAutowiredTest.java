@@ -49,14 +49,24 @@ public class ConfigAutowiredTest {
         System.out.println(address);
     }
 
-    @Value("#{'${sso.oauth2.client.white-list1:}'.split(',')}")
+    @Value("#{'${sso.oauth2.client.white-list1:}'.split(',')}")//配置为空的时候分割成含有一个空串元素的集合
     //private List<String> ssoOauth2ClientWhiteList1;
     private Set<String> ssoOauth2ClientWhiteList1;
+
+    //没有配置时设置为空集合
+    //方法一,但是配置有，没设值的时候，相当于配置了一个字符串，字符串切割后就是一个含有空串元素的集合
+    //@Value("#{'${sso.oauth2.client.white-list4:,}'.split(',')}")
+    @Value("#{'${sso.oauth2.client.white-list4:A,B,C}'.split(',')}")
+    //方法二,没配置，就默认值空串，EL表达式判断后取空集合或者null。配置为空串也是EL表达式取空集合或者null
+    //@Value("#{'${sso.oauth2.client.white-list4:}'.empty ? null : '${sso.oauth2.client.white-list4:}'.split(',')}")
+    //@Value("#{'${sso.oauth2.client.white-list4:}'.empty ? new java.util.ArrayList() : '${sso.oauth2.client.white-list4:}'.split(',')}")
+    private List<String> ssoOauth2ClientWhiteList4;
 
     //@Value("${sso.oauth2.client.white-list3:}")
     @Value("${sso.oauth2.client.white-list2:}")
     private String ssoOauth2ClientWhiteList2;
 
+    //数组默认英文逗号切割成数组
     @Value("${sso.oauth2.client.white-list1:}")
     private String[] ssoOauth2ClientWhiteList1Array;
 
@@ -86,6 +96,7 @@ public class ConfigAutowiredTest {
     public void run5(){
         //List<String> list1 = this.ssoOauth2ClientWhiteList1;
         Set<String> set1 = this.ssoOauth2ClientWhiteList1;
+        List<String> ssoOauth2ClientWhiteList4 = this.ssoOauth2ClientWhiteList4;
         String[] ssoOauth2ClientWhiteList1Array = this.ssoOauth2ClientWhiteList1Array;
         String appid2 = ConfigAutowiredTest.appid;
         Boolean sendPigeonUpdateReportEnable = this.sendPigeonUpdateReportEnable;
@@ -102,6 +113,12 @@ public class ConfigAutowiredTest {
         String username = testConfig.getUsername();
         List<String> hobby = testConfig.getHobby();
         Map<String, String> great = testConfig.getGreat();
+    }
+
+    @Test
+    public void run7(){
+        String[] split = ",".split(",");
+
     }
 
 }
