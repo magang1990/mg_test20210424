@@ -121,4 +121,17 @@ public class ConfigAutowiredTest {
 
     }
 
+    /**
+     * :后面没有或者properties配了key，没配value，相当于配了空字符串，则flag为null。
+     * 用基本数据类型时，配置默认值为空串或者只配key，则会报错。
+     */
+    @Value("${we.niu.flag:false}")
+    private Boolean flag;
+
+    @Test
+    public void run8(){
+
+
+    }
+
 }
