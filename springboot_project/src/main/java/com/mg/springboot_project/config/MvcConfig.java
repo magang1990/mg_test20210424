@@ -24,6 +24,6 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // 用户信息拦截器
         registry.addInterceptor(userInfoInterceptor()).addPathPatterns("/**").excludePathPatterns("/user/login",
-            "/user/login/out", "/user/send/logmessage");
+            "/user/login/out", "/user/send/logmessage", "/file/export", "/file/upload");
     }
 }
